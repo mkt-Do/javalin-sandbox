@@ -1,0 +1,22 @@
+
+plugins {
+    id 'java'
+    id 'application'
+}
+
+mainClassName = 'sandbox.App'
+
+dependencies {
+    compile 'com.google.guava:guava:23.0'
+    compile 'com.fasterxml.jackson.core:jackson-databind:2.9.5'
+    compile 'com.google.inject:guice:4.2.0'
+    compile 'com.google.inject.extensions:guice-multibindings:4.2.0'
+    compile 'io.javalin:javalin:1.6.1'
+    compile 'org.slf4j:slf4j-simple:1.7.13'
+
+    testCompile 'junit:junit:4.12'
+}
+
+repositories {
+    mavenCentral()
+}
