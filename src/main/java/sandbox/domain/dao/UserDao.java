@@ -1,4 +1,4 @@
-package sandbox.domain.repository;
+package sandbox.domain.dao;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -7,7 +7,7 @@ import javax.inject.Singleton;
 import sandbox.domain.entity.User;
 
 @Singleton
-public class UserRepository {
+public class UserDao {
 
     public List<User> findAll() {
         List<User> userList = new ArrayList<>();

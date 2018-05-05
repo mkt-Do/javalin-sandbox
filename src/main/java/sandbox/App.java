@@ -1,15 +1,27 @@
 package sandbox;
 
 import io.javalin.Javalin;
-import sandbox.domain.repository.UserRepository;
+import sandbox.controller.UserController;
+import sandbox.domain.dao.UserDao;
+
+import static io.javalin.ApiBuilder.*;
 
 public class App {
+
+    public static UserDao userDao;
+
     public static void main(String[] args) {
 
-        UserRepository userRepository = new UserRepository();
+        userDao = new UserDao();
 
-        Javalin app = Javalin.start(7000);
-        app.get("/", ctx -> ctx.json("Hello world"));
-        app.get("/users", ctx -> ctx.json(userRepository.findAll()));
+        Javalin app = Javalin.create()
+            .port(7000)
+            .start();
+
+        app.routes(() -> {
+            path("/users", () -> {
+                get("", UserController.getUsers);
+            });
+        });
     }
 }
