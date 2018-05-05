@@ -1,6 +1,7 @@
 package sandbox;
 
 import io.javalin.Javalin;
+import sandbox.controller.RootController;
 import sandbox.controller.UserController;
 import sandbox.domain.dao.UserDao;
 
@@ -19,8 +20,11 @@ public class App {
             .start();
 
         app.routes(() -> {
-            path("/users", () -> {
-                get("", UserController.getUsers);
+            path("/", () -> {
+                get(RootController::getRoot);
+                path("/users", () -> {
+                    get("", UserController::getUsers);
+                });
             });
         });
     }
